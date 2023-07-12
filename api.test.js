@@ -1,9 +1,11 @@
 import { faker } from '@faker-js/faker';
 import request from 'supertest';
 import { expect } from 'chai';
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env' });
 
 const url = 'https://gorest.co.in/public/v2/users';
-const bearerToken = '3676d5cd7be8d018e27cd2f11295edbcd9fbaed66ee9caed2bbe23d0be29ac5f';
+const bearerToken = process.env.BEARER_TOKEN;
 
 let createdUserId;
 
