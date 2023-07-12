@@ -17,7 +17,6 @@ describe('gorest API tests', function () {
       gender: 'male',
       status: 'active'
     };
-    //console.log(user);
     request(`${url}`)
       .post('/')
       .set('Authorization', `Bearer ${bearerToken}`)
@@ -32,7 +31,6 @@ describe('gorest API tests', function () {
         expect(res.body.gender).to.equal(user.gender);
         expect(res.body.status).to.equal(user.status);
         createdUserId = res.body.id;
-        //console.log(createdUserId);
         done();
       });
   });
@@ -46,14 +44,12 @@ describe('gorest API tests', function () {
         if (err) return done(err);
         expect(res.body).to.have.property('id');
         expect(res.body.id).to.equal(createdUserId);
-        //console.log(res.body);
         done();
       });
   });
 
   it('updates user details', function (done) {
     let updatedName = faker.person.firstName() + ' ' + faker.person.lastName();
-    //console.log(`updatedName: ${updatedName}`);
     request(`${url}`)
       .patch(`/${createdUserId}`)
       .set('Authorization', `Bearer ${bearerToken}`)
@@ -62,21 +58,17 @@ describe('gorest API tests', function () {
       .end(function (err, res) {
         if (err) return done(err);
         expect(res.body.name).to.equal(updatedName);
-        //console.log(res.body);
         done();
       });
   });
 
   it('updates user object', function (done) {
-    //let updatedName = faker.person.firstName() + ' ' + faker.person.lastName();
-    //console.log(`updatedName: ${updatedName}`);
     let updatedUser = {
       name: faker.person.firstName() + ' ' + faker.person.lastName(),
       email: faker.internet.email(),
       gender: 'female',
       status: 'inactive'
     };
-    //console.log(updatedUser);
     request(`${url}`)
       .put(`/${createdUserId}`)
       .set('Authorization', `Bearer ${bearerToken}`)
