@@ -5,6 +5,7 @@
  https://gorest.co.in/
 
  ## Used libraries:
+ - Supretest
  - Mocha
  - Chai
  - FakerJS
