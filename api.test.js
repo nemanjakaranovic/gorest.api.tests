@@ -82,7 +82,6 @@ describe('gorest API tests', function () {
         expect(res.body.email).to.equal(updatedUser.email);
         expect(res.body.gender).to.equal(updatedUser.gender);
         expect(res.body.status).to.equal(updatedUser.status);
-        //console.log(res.body);
         done();
       });
   });
